@@ -51,7 +51,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>source</key>
-					<string>-- https://coderwall.com/p/fyfp0w/applescript-to-connect-bluetooth-headphonesactivate application "SystemUIServer"tell application "System Events"	tell process "SystemUIServer"		-- Working CONNECT Script.  Goes through the following:		-- Clicks on Bluetooth Menu (OSX Top Menu Bar)		--    =&gt; Clicks on HUAWEI FreeBuds Pro Item		--      =&gt; Clicks on Connect Item		set btMenu to (menu bar item 1 of menu bar 1 whose description contains "bluetooth")		tell btMenu			click			tell (menu item "HUAWEI FreeBuds Pro" of menu 1)				click				if exists menu item "Connect" of menu 1 then					click menu item "Connect" of menu 1					return "Connecting..."				else					click btMenu -- Close main BT drop down if Connect wasn't present					key code 53					key code 53					return "Connect menu was not found, are you already connected?"				end if			end tell		end tell	end tellend tell</string>
+					<string>-- https://coderwall.com/p/fyfp0w/applescript-to-connect-bluetooth-headphonesactivate application "SystemUIServer"tell application "System Events"	tell process "SystemUIServer"		-- Working CONNECT Script.  Goes through the following:		-- Clicks on Bluetooth Menu (OSX Top Menu Bar)		--    =&gt; Clicks on HUAWEI FreeBuds Pro Item		--      =&gt; Clicks on Connect Item		set btMenu to (menu bar item 1 of menu bar 1 whose description contains "bluetooth")		repeat with counter from 1 to 2 -- run it twice because some time it doesn't see as disconnected the first time...			tell btMenu				click				tell (menu item "HUAWEI FreeBuds Pro" of menu 1)					click					if exists menu item "Connect" of menu 1 then						click menu item "Connect" of menu 1						-- return "Connecting..."					else						click btMenu -- Close main BT drop down if Connect wasn't present						key code 53						key code 53						-- return "Connect menu was not found, are you already connected?"					end if				end tell			end tell		end repeat	end tellend tell</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.RunScript</string>
@@ -102,12 +102,10 @@ end run</string>
 						<string>0</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>902.000000:315.000000</string>
+				<string>902.000000:704.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
