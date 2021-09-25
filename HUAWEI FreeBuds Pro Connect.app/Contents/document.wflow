@@ -51,8 +51,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>source</key>
-					<string>-- https://www.reddit.com/r/MacOS/comments/i4czgu/big_sur_airpods_script/gck3gz3/
--- https://gist.github.com/ieatfood/814b065964492f71f728da59a47413bcuse framework "IOBluetooth"use scripting additionsset headsetName to "HUAWEI FreeBuds Pro"on getFirstMatchingDevice(deviceName)	repeat with device in (current application's IOBluetoothDevice's pairedDevices() as list)		if (device's nameOrAddress as string) contains deviceName then return device	end repeatend getFirstMatchingDeviceon toggleDevice(device)	if not (device's isConnected as boolean) then		device's openConnection()		return "Connecting " &amp; (device's nameOrAddress as string)	else		device's closeConnection()		return "Disconnecting " &amp; (device's nameOrAddress as string)	end ifend toggleDevicereturn toggleDevice(getFirstMatchingDevice(headsetName))</string>
+					<string>-- https://www.reddit.com/r/MacOS/comments/i4czgu/big_sur_airpods_script/gck3gz3/-- https://gist.github.com/ieatfood/814b065964492f71f728da59a47413bcuse framework "IOBluetooth"use scripting additionsset headsetName to "HUAWEI FreeBuds Pro"on getFirstMatchingDevice(deviceName)	repeat with device in (current application's IOBluetoothDevice's pairedDevices() as list)		if (device's nameOrAddress as string) contains deviceName then return device	end repeatend getFirstMatchingDeviceon toggleDevice(device)	if not (device's isConnected as boolean) then		device's openConnection()		return "Connecting"		-- return "Connecting " &amp; (device's nameOrAddress as string)	else		device's closeConnection()		return "Disconnecting"		-- return "Disconnecting " &amp; (device's nameOrAddress as string)	end ifend toggleDeviceset statusAction to ""set deviceHandle to getFirstMatchingDevice(headsetName)repeat while statusAction is not "Connecting"	set statusAction to toggleDevice(deviceHandle)	-- display alert statusActionend repeat</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.RunScript</string>
@@ -76,6 +75,8 @@
 				</array>
 				<key>OutputUUID</key>
 				<string>DFB55C34-9991-4D02-A14E-38C47753D435</string>
+				<key>ShowWhenRun</key>
+				<false/>
 				<key>UUID</key>
 				<string>ED30A278-6C28-4187-BD4A-CB0907C6F577</string>
 				<key>UnlocalizedApplications</key>
@@ -106,7 +107,7 @@ end run</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>902.000000:709.000000</string>
+				<string>902.000000:827.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
